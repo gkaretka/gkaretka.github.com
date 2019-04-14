@@ -1,1 +1,108 @@
-Hello World
+<html>
+  <head>
+    <title>gkaretka.github.io</title>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=PT+Mono|Press+Start+2P" rel="stylesheet">  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <style>
+    a {
+      color: white;
+    }
+
+    a:hover {
+      color: RGBA(211, 211, 211, 1);
+    }
+
+    html {
+      font-family: 'Press Start 2P', cursive;
+      background: rgba(99, 99, 99, 1);
+      color: white;
+    }
+
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,0.7);
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 50px;
+      color: white;
+      transform: translate(-50%,-50%);
+    }
+
+    .overlay-text-small {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      font-size: 50px;
+      color: white;
+      transform: translate(-50%, 500%);
+      font-size:12px;
+    }
+
+    .big-text {
+      font-size: 19px;
+    }
+
+    .small-text {
+      font-size: 12px;
+    }
+
+    .container {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        width: 750px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .container {
+        width: 970px;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        width: 1170px;
+      }
+    }
+    </style>
+  </head>
+  <div class="overlay" id="overlay">
+    <p class="overlay-text">under maintenance
+    <p class="overlay-text-small">click to continue
+  </div>
+
+  <body class="container">
+    <div class="header">
+      <p class="big-text">Gregor Karetka
+    </div>
+    <hr>
+    <div class="all-centered-vertically">
+      <p class="small-text"><a href="https://github.com/gkaretka">Github</a>
+      <p class="small-text"><a href="https://stackoverflow.com/users/3613914/g-1-k">StackOverflow</a>
+      <p class="small-text"><a href="mailto:karetka.gregor@gmail.com">Email: karetka.gregor@gmail.com</a>
+    </div>
+  </body>
+
+  <script>
+    $("#overlay").click(function() {
+      $("#overlay").fadeOut( "slow", null);
+    });
+  </script>
+</html>
