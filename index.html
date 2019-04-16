@@ -1,108 +1,191 @@
 <html>
-  <head>
-    <title>gkaretka.github.io</title>
+<head>
+    <title>gkaretka</title>
     <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=PT+Mono|Press+Start+2P" rel="stylesheet">  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
-    a {
-      color: white;
-    }
 
-    a:hover {
-      color: RGBA(211, 211, 211, 1);
-    }
+        a {
+            color: white;
+            font-weight: bold;
+        }
 
-    html {
-      font-family: 'Press Start 2P', cursive;
-      background: rgba(99, 99, 99, 1);
-      color: white;
-    }
+        a:hover {
+            color: RGBA(211, 211, 211, 1);
+        }
 
-    .overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0,0,0,0.7);
-    }
+        html {
+            font-family: 'Roboto', sans-serif;
+            background: rgba(99, 99, 99, 1);
+            color: white;
+        }
 
-    .overlay-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      font-size: 50px;
-      color: white;
-      transform: translate(-50%,-50%);
-    }
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
-    .overlay-text-small {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      font-size: 50px;
-      color: white;
-      transform: translate(-50%, 500%);
-      font-size:12px;
-    }
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 50px;
+            color: white;
+            transform: translate(-50%, -50%);
+        }
 
-    .big-text {
-      font-size: 19px;
-    }
+        .overlay-text-small {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: white;
+            transform: translate(-50%, 600%);
+            font-size: 12px;
+        }
 
-    .small-text {
-      font-size: 12px;
-    }
+        .column-wrapper {
+            overflow: hidden;
+        }
 
-    .container {
-      padding-right: 15px;
-      padding-left: 15px;
-      margin-right: auto;
-      margin-left: auto;
-    }
+        .left-column {
+            float: left;
+            max-width: 40%;
+        }
 
-    @media (min-width: 768px) {
-      .container {
-        width: 750px;
-      }
-    }
+        .right-column {
+            border-left: 1px solid silver;
+            float: right;
+            padding-left: 3%;
+            max-width: 50%;
+        }
 
-    @media (min-width: 992px) {
-      .container {
-        width: 970px;
-      }
-    }
+        .big-text {
+            font-size: 19px;
+        }
 
-    @media (min-width: 1200px) {
-      .container {
-        width: 1170px;
-      }
-    }
+        .small-text {
+            font-size: 12px;
+        }
+
+        .container {
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                width: 970px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 1170px;
+            }
+        }
+
+        .outer-ul {
+            list-style: square;
+        }
+
+        .exper-li {
+            padding-top: 0.42%;
+        }
+
     </style>
-  </head>
-  <div class="overlay" id="overlay">
+</head>
+<div class="overlay" id="overlay">
     <p class="overlay-text">under maintenance
     <p class="overlay-text-small">click to continue
-  </div>
+</div>
 
-  <body class="container">
-    <div class="header">
-      <p class="big-text">Gregor Karetka
+<body class="container">
+<div class="header">
+    <p class="big-text">Gregor Karetka</p>
+    <p>I'm student interested in programming, embedded systems, computer vision and CAD/CAM. Also I like to tinker with
+        3d
+        printers,
+        laser engravers and occasionally I design PCBs in KiCad. I'm member of
+        <a href="http://www.compotes.net/">Compotes</a> robotic team interested in programming robots for Robo Cup
+        Junior.</p>
+</div>
+<hr>
+<div class="column-wrapper">
+    <div class="left-column">
+        <div class="education">
+            <h2>Education</h2>
+            <ul class="outer-ul">
+                <li>
+                    <p>2014 - 2019</p>
+                    <p>Gymnázium, Ul. Ladislava Sáru č. 1, Bratislava</p>
+                </li>
+            </ul>
+        </div>
     </div>
-    <hr>
-    <div class="all-centered-vertically">
-      <p class="small-text"><a href="https://github.com/gkaretka">Github</a>
-      <p class="small-text"><a href="https://stackoverflow.com/users/3613914/g-1-k">StackOverflow</a>
-      <p class="small-text"><a href="mailto:karetka.gregor@gmail.com">Email: karetka.gregor@gmail.com</a>
-    </div>
-  </body>
+    <div class="right-column">
+        <div class="experience">
+            <h2>Work experience</h2>
+            <ul class="outer-ul">
+                <li class="exper-li">
+                    <p>Nov 2018 - Mar 2019</p>
+                    <p><b>MADHack participant</b></p>
+                    <p>We developed prototype of IoT sensor for truck detection using magnetometer processed by STM32,
+                        data was sent back to our server throught Slovanet LoRaWAN using RFM95W LoRa module</p>
+                </li>
 
-  <script>
-    $("#overlay").click(function() {
-      $("#overlay").fadeOut( "slow", null);
+                <li class="exper-li">
+                    <p>Sep 2017 - Jul 2018</p>
+                    <p><b>RoboCup Junior participant</b></p>
+                    <p><b>Compotes</b></p>
+                    <p>Developing code for Nvidia Jetson TX2 using CUDA and C++ for ball and goal detection
+                        using OpenCv and processing of BNO055 ASSN orientation data</p>
+                </li>
+
+                <li class="exper-li">
+                    <p>Sep 2016 - Aug 2017</p>
+                    <p><b>RoboCup Junior participant</b></p>
+                    <p><b>Compotes</b></p>
+                    <p>Developing code for mobile app called <a
+                            href="https://github.com/Compotes/RCCT-android">RCCT-android</a> for ball and goal detection
+                        using OpenCv</p>
+                </li>
+                <li class="exper-li">
+                    <p>Aug 2016 - May 2017</p>
+                    <p><b>Junior PHP Developer - part time</b></p>
+                    <p><b>Everlution s.r.o</b></p>
+                    <p>Developing code for back-end in PHP using Symfony framework</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<hr>
+<div>
+    <p class="small-text"><a href="https://github.com/gkaretka">Github</a>
+    <p class="small-text"><a href="/"></a></p>
+    <p class="small-text"><a href="https://stackoverflow.com/users/3613914/g-1-k">StackOverflow</a>
+    <p class="small-text"><a href="mailto:karetka.gregor@gmail.com">Email: karetka.gregor@gmail.com</a>
+</div>
+</body>
+
+<script>
+    $("#overlay").click(function () {
+        $("#overlay").fadeOut("slow", null);
     });
-  </script>
+</script>
 </html>
