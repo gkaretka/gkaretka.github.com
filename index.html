@@ -3,7 +3,6 @@
     <title>gkaretka</title>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
 
         a {
@@ -19,35 +18,6 @@
             font-family: 'Roboto', sans-serif;
             background: rgba(99, 99, 99, 1);
             color: white;
-        }
-
-        .overlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .overlay-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            font-size: 50px;
-            color: white;
-            transform: translate(-50%, -50%);
-        }
-
-        .overlay-text-small {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            color: white;
-            transform: translate(-50%, 600%);
-            font-size: 12px;
         }
 
         .column-wrapper {
@@ -109,11 +79,6 @@
 
     </style>
 </head>
-<div class="overlay" id="overlay">
-    <p class="overlay-text">under maintenance
-    <p class="overlay-text-small">click to continue
-</div>
-
 <body class="container">
 <div class="header">
     <p class="big-text">Gregor Karetka</p>
@@ -121,8 +86,10 @@
         3d
         printers,
         laser engravers and occasionally I design PCBs in KiCad. I'm member of
-        <a target="_blank" href="http://www.compotes.net/">Compotes</a> robotic team interested in programming robots for Robo Cup
-        Junior.</p>
+        <a target="_blank" href="http://www.compotes.net/">Compotes</a> robotic team interested in programming robots
+        for RoboCup
+        Junior. My main interest are embedded systems which I would like to develop later in my career. I'm open to any
+        related work offer.</p>
 </div>
 <hr>
 <div class="column-wrapper">
@@ -161,7 +128,8 @@
                     <p><b>RoboCup Junior participant</b></p>
                     <p><b>Compotes</b></p>
                     <p>Developing code for mobile app called <a target="_blank"
-                            href="https://github.com/Compotes/RCCT-android">RCCT-android</a> for ball and goal detection
+                                                                href="https://github.com/Compotes/RCCT-android">RCCT-android</a>
+                        for ball and goal detection
                         using OpenCv</p>
                 </li>
                 <li class="exper-li">
@@ -170,22 +138,22 @@
                     <p><b>Everlution s.r.o</b></p>
                     <p>Developing code for back-end in PHP using Symfony framework</p>
                 </li>
+                <li class="exper-li">
+                    <p>Sep 2015 - Jun 2016</p>
+                    <p><b>RoboCup Junior participant</b></p>
+                    <p><b>Compotes</b></p>
+                    <p>Developing "image" processing using PixyCMU CAM in Arduino</p>
+                </li>
             </ul>
         </div>
     </div>
 </div>
 <hr>
-<div>
+<div class="footer">
     <p class="small-text"><a target="_blank" href="https://github.com/gkaretka">Github</a>
     <p class="small-text"><a target="_blank" href="/"></a></p>
     <p class="small-text"><a target="_blank" href="https://stackoverflow.com/users/3613914/g-1-k">StackOverflow</a>
     <p class="small-text"><a target="_blank" href="mailto:karetka.gregor@gmail.com">Email: karetka.gregor@gmail.com</a>
 </div>
 </body>
-
-<script>
-    $("#overlay").click(function () {
-        $("#overlay").fadeOut("slow", null);
-    });
-</script>
 </html>
