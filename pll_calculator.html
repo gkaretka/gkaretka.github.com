@@ -95,8 +95,8 @@
             a: '0',
             fref: '25',
             n: 0,
-            fout: '375',
-            n: '240',
+            fout: '375 [-]',
+            n: '240 [MHz]',
         },
         watch: {
             p: function (newP, oldP) {this.calc();},
@@ -118,8 +118,8 @@
         },
         methods: {
             calc: function () {
-                this.n = (parseFloat(this.b) * parseFloat(this.p)) + parseFloat(this.a);
-                this.fout = (parseFloat(this.n)*parseFloat(this.fref))/parseFloat(this.r);
+                this.n = (parseFloat(this.b) * parseFloat(this.p)) + parseFloat(this.a) + " [-]";
+                this.fout = (parseFloat(this.n)*parseFloat(this.fref))/parseFloat(this.r) + " [MHz]";
             },
         },
     });
