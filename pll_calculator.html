@@ -17,16 +17,19 @@
     <!-- Vue.js -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.min.js"></script>
+
     <!-- Lodash -->
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous">
-    </script>
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+        </script>
 
     <div id="app">
         <div class="container">
+            <!-- NAV bar -->
             <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div class="container-fluid">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -39,6 +42,7 @@
                     </ul>
                 </div>
             </nav>
+            <!-- PLL Calc 1 -->
             <div class="accordion accordion-flush" id="accordionPLLCalculator">
                 <div class="accordion-item open">
                     <h2 class="accordion-header" id="flush-headingOne">
@@ -106,6 +110,7 @@
                     </div>
                 </div>
 
+                <!-- PLL Calc 2 -->
                 <div class="accordion-item open">
                     <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -145,44 +150,98 @@
                                 </div>
                             </div>
                             <h4>Results</h2>
-                            <div class="row align-items-start">                                
+                                <div class="row align-items-start">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <p>N: {{ n_2 }} [-]</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <p>R: {{ r_2 }} [-]</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <p>B: {{ b_ful }}, reminder {{ b_mod }} [-]</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <p>A: {{ a_2 }} [-]</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row align-items-start">
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <p>Resulting N: {{ result_n }} [-]</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <p>Resulting Fout: {{ result_fout }} [MHz]</p>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mixer calc -->
+                <div class="accordion-item open">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#headingThree" aria-expanded="false" aria-controls="headingThree">
+                            Mixer visualizer calculator
+                        </button>
+                    </h2>
+                    <div id="headingThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                        data-bs-parent="#accordionPLLCalculator">
+                        <div class="accordion-body">
+                            <div class="row align-items-start">
+                                <h4>Input parameters</h4>
+                                Calculate mixer params.
                                 <div class="col">
                                     <div class="mb-3">
-                                        <p>N: {{ n_2 }} [-]</p>
+                                        <label for="f_lo" class="form-label">F<sub>out</sub> [MHz]</label>
+                                        <input type="number" v-model="f_lo" class="form-control" id="f_lo">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
-                                        <p>R: {{ r_2 }} [-]</p>
+                                        <label for="b_id" class="form-label">&Delta;F [MHz]</label>
+                                        <input type="number" v-model="f_low" class="form-control" id="f_low">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
-                                        <p>B: {{ b_ful }}, reminder {{ b_mod }} [-]</p>
+                                        <label for="r_id" class="form-label">P [-]</label>
+                                        <input type="number" v-model="f_high" class="form-control" id="f_high">
                                     </div>
                                 </div>
+                            </div>
+                            <h4>BP filter params</h4>
+                            <div class="row align-items-start">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <p>A: {{ a_2 }} [-]</p>
+                                        <label for="f_lo" class="form-label">F [MHz] insertion_loss</label>
+                                        <textarea type="text" v-model="s_params" class="form-control"
+                                            id="s_param"></textarea>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row align-items-start">  
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <p>Resulting N: {{ result_n }} [-]</p>
-                                    </div>
+                            <h4>Results</h2>
+                                <div class="row align-items-start">
+                                    <canvas id="mixer_chart" width="400" height="400"></canvas>
                                 </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <p>Resulting Fout: {{ result_fout }} [MHz]</p>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -197,14 +256,13 @@
             r: '16',
             a: '0',
             fref: '25',
-            f_delta_1: '1,5625',
+            f_delta_1: parseFloat('1.5625').toFixed(4),
             n: 0,
-            
+
             // out
             fout: '375',
             n: '240',
 
-            
             // second app
             f_delta_2: '1',
             fout_2: '375',
@@ -220,6 +278,15 @@
 
             result_n: parseFloat('369.0190217').toFixed(4),
             result_fout: parseFloat('369.0190217').toFixed(4),
+
+            s_params: "",
+            f_lo: '',
+            f_low: '',
+            f_high: '',
+
+            s_labels: [],
+            s_datas: [],
+
         },
         watch: {
             // calc for first app
@@ -231,10 +298,13 @@
             n: function (newV, oldV) { this.calc_1(); },
 
             // calc for second app
-            f_delta_2: function(newV, oldV) {this.calc_2()},
-            fout_2: function(newV, oldV) {this.calc_2()},
-            p_2: function(newV, oldV) {this.calc_2()},
-            fref_2: function(newV, oldV) {this.calc_2()},
+            f_delta_2: function (newV, oldV) { this.calc_2() },
+            fout_2: function (newV, oldV) { this.calc_2() },
+            p_2: function (newV, oldV) { this.calc_2() },
+            fref_2: function (newV, oldV) { this.calc_2() },
+
+            // mixer
+            s_params: function (newV, oldV) { this.view_s_params(); },
         },
         created: function () {
             // _.debounce is a function provided by lodash to limit how
@@ -253,18 +323,94 @@
                 this.fout = ((parseFloat(this.n) * parseFloat(this.fref)) / parseFloat(this.r)).toFixed(4);
             },
 
-            calc_2: function() {
-                this.r_2 = (parseFloat(this.fref_2)/parseFloat(this.f_delta_2)).toFixed(4);
-                this.n_2 = ((parseFloat(this.fout_2)*parseFloat(this.r_2))/parseFloat(this.fref_2)).toFixed(4);
-                this.b_ful =  Math.floor((parseFloat(this.n_2) / parseFloat(this.p_2))).toFixed(4);
+            calc_2: function () {
+                this.r_2 = (parseFloat(this.fref_2) / parseFloat(this.f_delta_2)).toFixed(4);
+                this.n_2 = ((parseFloat(this.fout_2) * parseFloat(this.r_2)) / parseFloat(this.fref_2)).toFixed(4);
+                this.b_ful = Math.floor((parseFloat(this.n_2) / parseFloat(this.p_2))).toFixed(4);
                 this.b_mod = (parseFloat(this.n_2) % parseFloat(this.p_2)).toFixed(4);
                 this.a_2 = (parseFloat(this.n_2) / (parseFloat(this.p_2) * parseFloat(this.b_ful))).toFixed(4);
 
                 this.result_n = (parseFloat(this.b_ful) * parseFloat(this.p_2) + parseFloat(this.a_2)).toFixed(4);
-                this.result_fout = ((parseFloat(this.result_n) * parseFloat(this.fref_2))/ parseFloat(this.r_2)).toFixed(4);
+                this.result_fout = ((parseFloat(this.result_n) * parseFloat(this.fref_2)) / parseFloat(this.r_2)).toFixed(4);
             },
+
+            view_s_params: function () {
+                var ndline_splitted = this.s_params.split("\n");
+
+                removeData(myChart);
+
+                for (var i = 0; i < ndline_splitted.length; i++) {
+                    var space_splitted = ndline_splitted[i].split(' ');
+
+                    addData(myChart, space_splitted[0], space_splitted[1])
+
+                }
+                myChart.update();
+            }
         },
     });
+
+    function addData(chart, label, data) {
+        chart.data.labels.push(label);
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.push(data);
+        });
+        chart.update();
+    }
+
+    function removeData(chart) {
+        chart.data.labels.pop();
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.pop();
+        });
+        chart.update();
+    }
+
+</script>
+
+<script>
+    const DATA_COUNT = 7;
+    const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
+
+    labels = app.s_labels;
+    data = {
+        labels: labels,
+        datasets: [
+            {
+                label: 'Dataset 1',
+                data: app.s_datas,
+                borderColor: 'red',
+                backgroundColor: 255,
+            },
+        ],
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart'
+                }
+            },
+            scales: {
+                y: {
+                    reverse: true
+                },
+            }
+        },
+    };
+
+
+
+    const ctx = document.getElementById('mixer_chart');
+    const myChart = new Chart(ctx, config);
 </script>
 
 </html>
