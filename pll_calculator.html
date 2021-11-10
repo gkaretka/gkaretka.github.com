@@ -22,65 +22,167 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
 
     <div id="app">
         <div class="container">
-            <h2>PLL Calculator</h2>
-            <a href="./index.html">GO BACK</a>
-            <div class="row align-items-start">
-                <h4>Input parameters</h4>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="p_id" class="form-label">P [-]</label>
-                        <input type="number" v-model="p" class="form-control" id="p_id">
-                    </div>
+            <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+                <div class="container-fluid">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="./index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./pll_calculator.html">PLL Calculator</a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="b_id" class="form-label">B [-]</label>
-                        <input type="number" v-model="b" class="form-control" id="b_id">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="r_id" class="form-label">R [-]</label>
-                        <input type="number" v-model="r" class="form-control" id="r_id">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="a_id" class="form-label">A [-]</label>
-                        <input type="number" v-model="a" class="form-control" id="a_id">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="fref_id" class="form-label">F<sub>ref</sub> [MHz]</label>
-                        <input type="number" v-model="fref" class="form-control" id="fref_id">
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-start">
-                <h4>Results</h2>
-                    <div class="col">
-                        <div class="mb-3">
-                            <p>{{ fout }}</p>
+            </nav>
+            <div class="accordion accordion-flush" id="accordionPLLCalculator">
+                <div class="accordion-item open">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            PLL Calculator for given values
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionPLLCalculator">
+                        <div class="accordion-body">
+                            <div class="row align-items-start">
+                                <h4>Input parameters</h4>
+                                Calculate output frequency and frequency step for Integer-N PLL.
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="p_id" class="form-label">P [-]</label>
+                                        <input type="number" v-model="p" class="form-control" id="p_id">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="b_id" class="form-label">B [-]</label>
+                                        <input type="number" v-model="b" class="form-control" id="b_id">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="r_id" class="form-label">R [-]</label>
+                                        <input type="number" v-model="r" class="form-control" id="r_id">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="a_id" class="form-label">A [-]</label>
+                                        <input type="number" v-model="a" class="form-control" id="a_id">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="fref_id" class="form-label">F<sub>ref</sub> [MHz]</label>
+                                        <input type="number" v-model="fref" class="form-control" id="fref_id">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-start">
+                                <h4>Results</h2>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <p>F<sub>out</sub>: {{ fout }} [MHz]</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <p>N: {{ n }} [-]</p>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="mb-3">
+                                            <p>&Delta;F: {{ f_delta_1 }} [MHz]</p>
+                                        </div>
+                                    </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <p>{{ n }}</p>
+                </div>
+
+                <div class="accordion-item open">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            PLL Calculator for constant frequency step
+                        </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionPLLCalculator">
+                        <div class="accordion-body">
+                            <div class="row align-items-start">
+                                <h4>Input parameters</h4>
+                                Calculate output frequency and frequency step for Integer-N PLL.
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="p_id" class="form-label">F<sub>out</sub> [MHz]</label>
+                                        <input type="number" v-model="fout_2" class="form-control" id="p_id">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="b_id" class="form-label">&Delta;F [MHz]</label>
+                                        <input type="number" v-model="f_delta_2" class="form-control" id="b_id">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="r_id" class="form-label">P [-]</label>
+                                        <input type="number" v-model="p_2" class="form-control" id="r_id">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label for="a_id" class="form-label">F<sub>ref</sub> [MHz]</label>
+                                        <input type="number" v-model="fref_2" class="form-control" id="a_id">
+                                    </div>
+                                </div>
+                            </div>
+                            <h4>Results</h2>
+                            <div class="row align-items-start">                                
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <p>N: {{ n_2 }} [-]</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <p>R: {{ r_2 }} [-]</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <p>B: {{ b_ful }}, reminder {{ b_mod }} [-]</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <p>A: {{ a_2 }} [-]</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row align-items-start">  
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <p>Resulting N: {{ result_n }} [-]</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <p>Resulting Fout: {{ result_fout }} [MHz]</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
@@ -89,22 +191,50 @@
     var app = new Vue({
         el: '#app',
         data: {
+            // first app
             p: '16',
             b: '15',
             r: '16',
             a: '0',
             fref: '25',
+            f_delta_1: '1,5625',
             n: 0,
-            fout: '375 [-]',
-            n: '240 [MHz]',
+            
+            // out
+            fout: '375',
+            n: '240',
+
+            
+            // second app
+            f_delta_2: '1',
+            fout_2: '375',
+            p_2: '16',
+            fref_2: '25',
+
+            // out
+            n_2: '375',
+            r_2: '25',
+            b_ful: '23',
+            b_mod: '7',
+            a_2: '1,019021739',
+
+            result_n: '369,0190217',
+            result_fout: '369,0190217',
         },
         watch: {
-            p: function (newP, oldP) {this.calc();},
-            b: function (newP, oldP) {this.calc();},
-            r: function (newP, oldP) {this.calc();},
-            a: function (newP, oldP) {this.calc();},
-            fref: function (newP, oldP) {this.calc();},
-            n: function (newP, oldP) {this.calc();},
+            // calc for first app
+            p: function (newV, oldV) { this.calc_1(); },
+            b: function (newV, oldV) { this.calc_1(); },
+            r: function (newV, oldV) { this.calc_1(); },
+            a: function (newV, oldV) { this.calc_1(); },
+            fref: function (newV, oldV) { this.calc_1(); },
+            n: function (newV, oldV) { this.calc_1(); },
+
+            // calc for second app
+            f_delta_2: function(newV, oldV) {this.calc_2()},
+            fout_2: function(newV, oldV) {this.calc_2()},
+            p_2: function(newV, oldV) {this.calc_2()},
+            fref_2: function(newV, oldV) {this.calc_2()},
         },
         created: function () {
             // _.debounce is a function provided by lodash to limit how
@@ -117,9 +247,20 @@
             this.debouncedCalc = _.debounce(this.calc, 500)
         },
         methods: {
-            calc: function () {
-                this.n = (parseFloat(this.b) * parseFloat(this.p)) + parseFloat(this.a) + " [-]";
-                this.fout = (parseFloat(this.n)*parseFloat(this.fref))/parseFloat(this.r) + " [MHz]";
+            calc_1: function () {
+                this.n = (parseFloat(this.b) * parseFloat(this.p)) + parseFloat(this.a);
+                this.fout = (parseFloat(this.n) * parseFloat(this.fref)) / parseFloat(this.r);
+            },
+
+            calc_2: function() {
+                this.r_2 = (parseFloat(this.fref_2)/parseFloat(this.f_delta_2));
+                this.n_2 = (parseFloat(this.fout_2)*parseFloat(this.r_2))/parseFloat(this.fref_2);
+                this.b_ful =  Math.floor((parseFloat(this.n_2) / parseFloat(this.p_2)));
+                this.b_mod = parseFloat(this.n_2) % parseFloat(this.p_2);
+                this.a_2 = parseFloat(this.n_2) / (parseFloat(this.p_2) * parseFloat(this.b_ful));
+
+                this.result_n = parseFloat(this.b_ful) * parseFloat(this.p_2) + parseFloat(this.a_2);
+                this.result_fout = (parseFloat(this.result_n) * parseFloat(this.fref_2))/ parseFloat(this.r_2);
             },
         },
     });
