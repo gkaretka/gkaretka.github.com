@@ -216,10 +216,10 @@
             r_2: '25',
             b_ful: '23',
             b_mod: '7',
-            a_2: '1,019021739',
+            a_2: parseFloat('1,019021739').toFixed(4),
 
-            result_n: '369,0190217',
-            result_fout: '369,0190217',
+            result_n: parseFloat('369,0190217').toFixed(4),
+            result_fout: parseFloat('369,0190217').toFixed(4),
         },
         watch: {
             // calc for first app
@@ -244,23 +244,24 @@
             // finished typing before making the ajax request. To learn
             // more about the _.debounce function (and its cousin
             // _.throttle), visit: https://lodash.com/docs#debounce
-            this.debouncedCalc = _.debounce(this.calc, 500)
+            this.debouncedCalc = _.debounce(this.calc_1, 500);
+            this.debouncedCalc = _.debounce(this.calc_2, 500);
         },
         methods: {
             calc_1: function () {
-                this.n = (parseFloat(this.b) * parseFloat(this.p)) + parseFloat(this.a);
-                this.fout = (parseFloat(this.n) * parseFloat(this.fref)) / parseFloat(this.r);
+                this.n = ((parseFloat(this.b) * parseFloat(this.p)) + parseFloat(this.a)).toFixed(4);
+                this.fout = ((parseFloat(this.n) * parseFloat(this.fref)) / parseFloat(this.r)).toFixed(4);
             },
 
             calc_2: function() {
-                this.r_2 = (parseFloat(this.fref_2)/parseFloat(this.f_delta_2));
-                this.n_2 = (parseFloat(this.fout_2)*parseFloat(this.r_2))/parseFloat(this.fref_2);
-                this.b_ful =  Math.floor((parseFloat(this.n_2) / parseFloat(this.p_2)));
-                this.b_mod = parseFloat(this.n_2) % parseFloat(this.p_2);
-                this.a_2 = parseFloat(this.n_2) / (parseFloat(this.p_2) * parseFloat(this.b_ful));
+                this.r_2 = (parseFloat(this.fref_2)/parseFloat(this.f_delta_2)).toFixed(4);
+                this.n_2 = ((parseFloat(this.fout_2)*parseFloat(this.r_2))/parseFloat(this.fref_2)).toFixed(4);
+                this.b_ful =  Math.floor((parseFloat(this.n_2) / parseFloat(this.p_2))).toFixed(4);
+                this.b_mod = (parseFloat(this.n_2) % parseFloat(this.p_2)).toFixed(4);
+                this.a_2 = (parseFloat(this.n_2) / (parseFloat(this.p_2) * parseFloat(this.b_ful))).toFixed(4);
 
-                this.result_n = parseFloat(this.b_ful) * parseFloat(this.p_2) + parseFloat(this.a_2);
-                this.result_fout = (parseFloat(this.result_n) * parseFloat(this.fref_2))/ parseFloat(this.r_2);
+                this.result_n = (parseFloat(this.b_ful) * parseFloat(this.p_2) + parseFloat(this.a_2)).toFixed(4);
+                this.result_fout = ((parseFloat(this.result_n) * parseFloat(this.fref_2))/ parseFloat(this.r_2)).toFixed(4);
             },
         },
     });
